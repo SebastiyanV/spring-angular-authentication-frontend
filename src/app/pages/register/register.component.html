@@ -1,0 +1,42 @@
+<h1 class="text-muted">Register</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" class="form-control" [formControlName]="'email'">
+    <span *ngIf="email.invalid && email.touched" class="small text-danger">
+      <span *ngIf="email.errors.required">Email cannot be empty</span>
+      <span *ngIf="email.errors.email">Enter a valid email address</span>
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="text" class="form-control" [formControlName]="'password'">
+    <span *ngIf="password.invalid && password.touched" class="small text-danger">
+      <span *ngIf="password.errors.required">Password cannot be empty</span>
+      <span *ngIf="password.errors.minlength">Password must be more than 6 characters</span>
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label>First name</label>
+    <input type="text" class="form-control" [formControlName]="'firstName'">
+    <span *ngIf="firstName.invalid && firstName.touched" class="small text-danger">
+      <span *ngIf="firstName.errors.required">First name cannot be empty</span>
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label>Last name</label>
+    <input type="text" class="form-control" [formControlName]="'lastName'">
+    <span *ngIf="lastName.invalid && lastName.touched" class="small text-danger">
+      <span *ngIf="lastName.errors.required">Last name cannot be empty</span>
+    </span>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-outline-secondary">Register</button>
+  </div>
+
+</form>
