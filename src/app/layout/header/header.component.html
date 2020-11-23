@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" routerLink="/">
       <img src="assets/logo.png" width="200px" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -15,8 +15,24 @@
         <button class="header-btn" routerLink="/auth/register" *ngIf="!isLoggedIn()">
           Register
         </button>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user/profile" *ngIf="isLoggedIn()">Profile</a>
+        <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            My profile
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="isLoggedIn()">
+            <div class="text-center">
+              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle" width="100px">
+            </div>
+            <div class="text-center mt-3">
+              <span class="font-weight-bold">{{currentUser?.firstName}} {{currentUser?.lastName}}</span>
+            </div>
+            <hr>
+            <a class="dropdown-item" routerLink="/user/profile">My profile</a>
+            <a class="dropdown-item" href="#">Settings</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/logout">Logout</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/" *ngIf="isLoggedIn()" (click)="logOut()">Logout</a>

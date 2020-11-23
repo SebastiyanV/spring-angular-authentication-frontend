@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../services/user.service";
-import {Observable} from "rxjs";
-import {User} from "../../models/user/user.model";
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { Observable } from 'rxjs';
+import { User } from '../../models/user/user.model';
+import { error } from 'console';
 
 @Component({
   selector: 'app-profile',
@@ -11,19 +13,22 @@ import {User} from "../../models/user/user.model";
 export class ProfileComponent implements OnInit {
   currentUser: User;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.userService.getCurrentProfile()
-      .subscribe(
-        data => {
-          this.currentUser = data;
-        },
-        error => {
-          console.log(error)
+    this.route.paramMap.subscribe(
+      params => {
+        if (params.get('userId') !== null) {
+          this.userService.getUserById(params.get('userId'))
+            .subscribe(data => this.currentUser = data);
+        } else {
+          this.userService.getCurrentProfile()
+            .subscribe(data => this.currentUser = data);
         }
-      );
+      }
+    );
   }
-
 }

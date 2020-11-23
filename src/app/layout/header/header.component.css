@@ -33,3 +33,10 @@
   text-transform: uppercase;
   letter-spacing: 0.1rem;
 }
+
+.dropdown-menu a {
+  color: black;
+  font-weight: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.05rem;
+}

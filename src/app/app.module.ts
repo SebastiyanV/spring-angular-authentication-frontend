@@ -13,6 +13,8 @@ import {CommonModule} from "@angular/common";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ProfileComponent } from './pages/profile/profile.component';
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import { UsersComponent } from './pages/home/users/users.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     HeaderComponent,
     FooterComponent,
     ProfileComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
