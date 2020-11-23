@@ -23,3 +23,9 @@ input:focus {
   border-bottom-right-radius: 0.35rem;
   border-bottom: solid 0.15rem #838383;
 }
+.btn {
+  padding: 1rem 2.8rem;
+  background-color: #002f34;
+  color: white;
+  letter-spacing: 0.1rem;
+}

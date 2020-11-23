@@ -2,10 +2,10 @@
   <div class="card-header">
     <h1 class="text-muted">Register</h1>
   </div>
-  <div class="card-body">
+  <div class="card-body" *ngIf="!successRegister">
 
     <div class="alert alert-danger alert-dismissible fade show" role="alert"
-    *ngIf="errors.length > 0">
+         *ngIf="errors.length > 0">
       <span *ngFor="let err of errors">{{err}}</span>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -69,6 +69,14 @@
       </div>
 
     </form>
+  </div>
+  <div class="card-body" *ngIf="successRegister">
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Hello {{firstName.value}} {{lastName.value}}</h4>
+      <hr>
+      <p>Thank you for your registration!</p>
+      <p>Please check your email and confirm your email address to complete the registration process.</p>
+    </div>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {UserRegister} from "../../models/user-register.model";
@@ -9,16 +9,19 @@ import {NavigationExtras, Router} from "@angular/router";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
   userRegisterModel: UserRegister;
-  errors: Array<string> = [];
+  successRegister: boolean;
+  errors: Array<string>;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {
+    this.successRegister = false;
+    this.errors = [];
   }
 
   ngOnInit(): void {
@@ -29,6 +32,11 @@ export class RegisterComponent implements OnInit {
       lastName: ['', Validators.required],
     })
   }
+
+  ngOnDestroy(): void {
+    this.successRegister = false;
+  }
+
 
   get email() {
     return this.registerForm.get('email')
@@ -62,11 +70,13 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.userRegisterModel)
       .subscribe(
         data => {
-          this.router.navigateByUrl('/auth/login')
+          this.successRegister = true;
         },
         error => {
           this.errors.push(error.error.message)
         }
       )
   }
+
+
 }

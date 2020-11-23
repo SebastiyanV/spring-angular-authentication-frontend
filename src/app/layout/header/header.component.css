@@ -26,3 +26,10 @@
 .header-btn:focus {
   outline: none;
 }
+
+.nav-item a {
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   userLoginModel: UserLogin;
   successRegisterMessage: boolean;
+  errors: Array<string>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
+    this.errors = [];
   }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit {
         // console.log(jwtDecode(data.token))
       },
       error => {
-        console.log(error)
+        this.errors.push(error.error.message)
       }
     )
   }
