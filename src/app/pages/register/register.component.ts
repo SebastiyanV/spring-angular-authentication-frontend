@@ -47,6 +47,13 @@ export class RegisterComponent implements OnInit {
   };
 
   onSubmit() {
+    this.errors = [];
+
+    if (this.registerForm.invalid) {
+      this.errors.push("Please fill all fields correctly.");
+      return;
+    }
+
     this.userRegisterModel = new UserRegister();
     this.userRegisterModel.email = this.registerForm.get('email').value;
     this.userRegisterModel.password = this.registerForm.get('password').value;
@@ -58,7 +65,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigateByUrl('/auth/login')
         },
         error => {
-          console.log(error)
+          this.errors.push(error.error.message)
         }
       )
   }

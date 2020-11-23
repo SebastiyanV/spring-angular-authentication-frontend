@@ -29,7 +29,7 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     AppRoutingModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

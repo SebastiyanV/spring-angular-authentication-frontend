@@ -1,0 +1,35 @@
+h1 {
+  color: #838383;
+}
+
+input:hover,
+input:active,
+input:focus
+{
+  outline:0 !important;
+  -webkit-appearance:none;
+  box-shadow: none !important;
+  background-color: #f2f4f5;
+}
+
+input {
+  height: 3.5rem;
+  background-color: #f2f4f5;
+  border: none;
+}
+
+input:focus {
+  border-bottom-left-radius: 0.35rem;
+  border-bottom-right-radius: 0.35rem;
+  border-bottom: solid 0.15rem #838383;
+}
+
+.has-error {
+  background-color: black;
+}
+
+.is-invalid {
+  border-bottom-left-radius: 0.35rem;
+  border-bottom-right-radius: 0.35rem;
+  border-bottom: solid 0.15rem #e30d0d;
+}

@@ -1,0 +1,28 @@
+.navbar {
+  background-color: #002f34;
+}
+
+.header-btn {
+  background-color: #002f34;
+  color: white;
+  padding: 0.4rem 1.2rem;
+  margin-right: 1rem;
+  border: solid 0.2rem white;
+  border-radius: 0.4rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  -webkit-transition: background-color, color 1s;
+  -moz-transition: background-color, color 1s;
+  -ms-transition: background-color, color 1s;
+  -o-transition: background-color, color 1s;
+  transition: background-color, color 1s;
+}
+
+.header-btn:hover {
+  color: #002f34;
+  background-color: white;
+}
+
+.header-btn:focus {
+  outline: none;
+}
