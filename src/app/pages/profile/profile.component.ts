@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user/user.model';
-import { error } from 'console';
 
 @Component({
   selector: 'app-profile',

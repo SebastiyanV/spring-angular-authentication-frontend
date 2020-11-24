@@ -1,5 +1,9 @@
 import {HttpHeaders} from '@angular/common/http';
 
+// SecretKey
+export const SECRET_KEY = 'mySecretKey';
+
+// Headers
 export const HTTP_OPTIONS = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };

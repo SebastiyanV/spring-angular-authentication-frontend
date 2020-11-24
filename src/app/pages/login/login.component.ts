@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
-import {UserLogin} from '../../models/user-login.model';
-import {UserRegister} from '../../models/user-register.model';
-import {Token} from '@angular/compiler';
-import {TokenService} from '../../services/token.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { UserLogin } from '../../models/user-login.model';
+import { UserRegister } from '../../models/user-register.model';
+import { Token } from '@angular/compiler';
+import { TokenService } from '../../services/token.service';
 import jwtDecode from 'jwt-decode';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -37,14 +37,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): any {
     this.userLoginModel = new UserLogin();
     this.userLoginModel.email = this.loginForm.get('email').value;
     this.userLoginModel.password = this.loginForm.get('password').value;
     this.authService.login(this.userLoginModel).subscribe(
       data => {
         this.tokenService.saveToken(data.token);
-        this.tokenService.saveUser(data);
+        this.tokenService.saveRoles(data.roles);
         this.router.navigateByUrl('/user/profile');
       },
       error => {
